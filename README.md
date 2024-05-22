@@ -1,7 +1,7 @@
 # AdventureWorks Sales Analytics with Advanced SQL Queries, Python for automating data import into MySQL database and Excel for data visualization and reporting
 
 ## Objective
-The aim of this advanced SQL, Python and Excel project is to answer 10 questions by conducting an in-depth analysis of AdventureWorks bike sales data to gain valuable insights in sales performance by country, customer segments and products. Additionally, the analysis is geared towards identifying trends to inform data-driven business strategies for improved decision-making. 
+The aim of this advanced SQL, Python and Excel project is to answer 10 questions by conducting an in-depth analysis of AdventureWorks bike sales data to gain valuable insights into sales performance by country, customer segments and products. Additionally, the analysis is geared towards identifying trends to inform data-driven business strategies for improved decision-making. 
 
 ## Data Source and Overview
 The AdventureWorks Raw Data csv files used for the analysis were downloaded from Kaggle (excluding three duplicate files in the Sales Data folder and Product Category Sales (Unpivot Demo) file). The ten datasets used encompass sales transactional information, product details, returns details, territories and customer demographics, essential for sales analysis. Here is the link to download the files: https://www.kaggle.com/datasets/deepujawarkar/adventure-works-raw-data  
@@ -41,10 +41,10 @@ Age of customers were calculated by subtracting OrderDate from the new BirthDate
 
 Regarding bike purchases by income, customers were grouped into the following buckets: 
 
-* Under $50k (representing annual income below $50,000) 
-* $50k - $75k (representing annual income between $50,000 and $75,000)
-* $75k - $100k (representing annual income between $75,000 and $100,000)
-* Over $100k (representing annual income above $100,000)
+* a. Under $50k (representing annual income below $50,000) 
+* b. $50k - $75k (representing annual income between $50,000 and $75,000)
+* c. $75k - $100k (representing annual income between $75,000 and $100,000)
+* d. Over $100k (representing annual income above $100,000)
 
 Similarly, customers with and without children were grouped as follows: 
 
