@@ -1,4 +1,4 @@
-# AdventureWorks Sales Analytics with Advanced SQL Queries, Python for automating data import into MySQL database and Excel for data visualization and reporting
+# AdventureWorks Sales Analysis with Advanced SQL, Python for Automating Data Import into MySQL Database and Excel for Data Visualization and Reporting
 
 ## Objective
 The aim of this advanced SQL, Python and Excel project is to answer 10 questions by conducting an in-depth analysis of AdventureWorks bike sales data to gain valuable insights into sales performance by country, customer segments and products. Additionally, the analysis is geared towards identifying trends to inform data-driven business strategies for improved decision-making. 
