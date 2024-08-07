@@ -38,23 +38,23 @@ WITH cte_age AS
 -- Group ages into bins/buckets and calculate sales by age group.
 SELECT Country,
 	   CASE 
-		   WHEN Age < 30 THEN 'a. Under 30'
-		   WHEN Age BETWEEN 30 AND 39 THEN 'b. 30-39'
-		   WHEN Age BETWEEN 40 AND 49 THEN 'c. 40-49'
-		   WHEN Age BETWEEN 50 AND 59 THEN 'd. 50-59'
-		   WHEN Age >= 60 THEN 'e. Over 60'
-		   ELSE 'Other'
+	       WHEN Age < 30 THEN 'a. Under 30'
+	       WHEN Age BETWEEN 30 AND 39 THEN 'b. 30-39'
+	       WHEN Age BETWEEN 40 AND 49 THEN 'c. 40-49'
+	       WHEN Age BETWEEN 50 AND 59 THEN 'd. 50-59'
+	       WHEN Age >= 60 THEN 'e. Over 60'
+	       ELSE 'Other'
         END AS AgeGroup,
 	    ROUND(SUM(Sales), 2) AS Sales
 FROM cte_age 
 GROUP BY Country,
         CASE 
-		   WHEN Age < 30 THEN 'a. Under 30'
-		   WHEN Age BETWEEN 30 AND 39 THEN 'b. 30-39'
-		   WHEN Age BETWEEN 40 AND 49 THEN 'c. 40-49'
-		   WHEN Age BETWEEN 50 AND 59 THEN 'd. 50-59'
-		   WHEN Age >= 60 THEN 'e. Over 60'
-		   ELSE 'Other'
+	    WHEN Age < 30 THEN 'a. Under 30'
+	    WHEN Age BETWEEN 30 AND 39 THEN 'b. 30-39'
+	    WHEN Age BETWEEN 40 AND 49 THEN 'c. 40-49'
+	    WHEN Age BETWEEN 50 AND 59 THEN 'd. 50-59'
+	    WHEN Age >= 60 THEN 'e. Over 60'
+	    ELSE 'Other'
         END
 ORDER BY Country, AgeGroup;
 
@@ -76,23 +76,23 @@ WITH cte_age AS
 -- Group ages into bins/buckets and calculate sales by age group.
 SELECT SubcategoryName AS ProductSubcategory,
 	   CASE 
-		   WHEN Age < 30 THEN 'a. Under 30'
-		   WHEN Age BETWEEN 30 AND 39 THEN 'b. 30-39'
-		   WHEN Age BETWEEN 40 AND 49 THEN 'c. 40-49'
-		   WHEN Age BETWEEN 50 AND 59 THEN 'd. 50-59'
-		   WHEN Age >= 60 THEN 'e. Over 60'
-		   ELSE 'Other'
+	       WHEN Age < 30 THEN 'a. Under 30'
+	       WHEN Age BETWEEN 30 AND 39 THEN 'b. 30-39'
+	       WHEN Age BETWEEN 40 AND 49 THEN 'c. 40-49'
+	       WHEN Age BETWEEN 50 AND 59 THEN 'd. 50-59'
+	       WHEN Age >= 60 THEN 'e. Over 60'
+	       ELSE 'Other'
         END AS AgeGroup,
 	    SUM(OrderQuantity) AS QuantitySold
 FROM cte_age
 GROUP BY SubcategoryName,
         CASE 
-		   WHEN Age < 30 THEN 'a. Under 30'
-		   WHEN Age BETWEEN 30 AND 39 THEN 'b. 30-39'
-		   WHEN Age BETWEEN 40 AND 49 THEN 'c. 40-49'
-		   WHEN Age BETWEEN 50 AND 59 THEN 'd. 50-59'
-		   WHEN Age >= 60 THEN 'e. Over 60'
-		   ELSE 'Other'
+	    WHEN Age < 30 THEN 'a. Under 30'
+	    WHEN Age BETWEEN 30 AND 39 THEN 'b. 30-39'
+	    WHEN Age BETWEEN 40 AND 49 THEN 'c. 40-49'
+	    WHEN Age BETWEEN 50 AND 59 THEN 'd. 50-59'
+	    WHEN Age >= 60 THEN 'e. Over 60'
+	    ELSE 'Other'
         END
 ORDER BY ProductSubcategory, AgeGroup;
 
@@ -115,13 +115,13 @@ GROUP BY DATE_FORMAT(s.OrderDate, '%b'), t.Country;
 	
 -- Calculate cumulative monthly sales using an Aggregate Window Function and fetch results from the derived table below. 
 SELECT  Month_2021, 
-	    Country,
+	Country,
         Sales,
         SUM(Sales) OVER (PARTITION BY Country ORDER BY Month_2021) AS CumulativeSales
 -- Fetch date in 'MM-YYYY' format (eg. 01-2021), countries and calculate sales by joining the necessary tables using a derived table.         
 FROM (SELECT DATE_FORMAT(s.OrderDate, '%m-%Y') AS Month_2021,
-		    t.Country,
-            SUM(s.OrderQuantity * p.ProductPrice) AS Sales
+	     t.Country,
+             SUM(s.OrderQuantity * p.ProductPrice) AS Sales
 	  FROM sales_2021 s, territories t, products p
 	  WHERE s.TerritoryKey = t.SalesTerritoryKey 
 			AND Country IN ('Australia', 'United States')
@@ -134,9 +134,9 @@ FROM (SELECT DATE_FORMAT(s.OrderDate, '%m-%Y') AS Month_2021,
 -- Fetch countries, product categories, total returns and product prices using a CTE.
 WITH qty_returned AS
 		(SELECT t.Country,
-				pc.CategoryName,
-				SUM(COALESCE(r.ReturnQuantity, 0)) AS ReturnsQuantity,
-				p.ProductPrice
+			pc.CategoryName,
+			SUM(COALESCE(r.ReturnQuantity, 0)) AS ReturnsQuantity,
+			p.ProductPrice
 		 FROM product_categories pc  
 		 LEFT JOIN product_subcategories ps USING (ProductCategoryKey)
 		 JOIN products p USING (ProductSubcategoryKey)
@@ -148,15 +148,15 @@ WITH qty_returned AS
      -- Use a CTE to fetch countries, product categories, total returns and total sales.
 	 returns_val AS
 		(SELECT Country,
-				CategoryName,
-				ReturnsQuantity,
-				SUM(ProductPrice * ReturnsQuantity) AS ReturnsValue
+			CategoryName,
+			ReturnsQuantity,
+			SUM(ProductPrice * ReturnsQuantity) AS ReturnsValue
 		 FROM qty_returned
 		 GROUP BY Country, CategoryName, ReturnsQuantity
 		 ORDER BY Country, CategoryName)
 -- Calculate total sales and total returns per product category for each country.
 SELECT COALESCE(Country, 'None') AS Country,
-	   CategoryName AS ProductCategory,
+       CategoryName AS ProductCategory,
        SUM(ReturnsQuantity) AS ReturnsQuantity,
        ROUND(SUM(ReturnsValue), 2) AS ReturnsValue
 FROM returns_val
@@ -168,7 +168,7 @@ GROUP BY Country, CategoryName;
 -- Fetch product categories and calculate total sales, using a CTE. 
 WITH category_sales AS
 		(SELECT pc.CategoryName,
-			    ROUND(SUM(s.OrderQuantity * p.ProductPrice), 2) AS Sales 
+			ROUND(SUM(s.OrderQuantity * p.ProductPrice), 2) AS Sales 
 		 FROM product_categories pc
 		 JOIN product_subcategories ps 
 		 ON pc.ProductCategoryKey = ps.ProductCategoryKey 
@@ -177,13 +177,13 @@ WITH category_sales AS
 		 JOIN sales_combined s
 		 ON p.ProductKey = s.ProductKey
          WHERE pc.CategoryName IN ('Accessories', 'Bikes', 'Clothing') 
-			AND s.TerritoryKey = (SELECT SalesTerritoryKey FROM territories WHERE Country = 'Canada')
+		AND s.TerritoryKey = (SELECT SalesTerritoryKey FROM territories WHERE Country = 'Canada')
          GROUP BY CategoryName
          ORDER BY CategoryName),
     -- Fetch product categories and calculate total returns, using a CTE. 
 	returns_value AS
 		(SELECT pc.CategoryName,
-			    ROUND(SUM(r.ReturnQuantity * p.ProductPrice), 2) AS ReturnsValue
+			ROUND(SUM(r.ReturnQuantity * p.ProductPrice), 2) AS ReturnsValue
 		 FROM returns r
 		 JOIN products p
 		 ON r.ProductKey = p.ProductKey
@@ -192,12 +192,12 @@ WITH category_sales AS
 		 JOIN product_categories pc
 		 ON ps.ProductCategoryKey = pc.ProductCategoryKey
          WHERE pc.CategoryName IN ('Accessories', 'Bikes', 'Clothing') 
-			AND r.TerritoryKey = (SELECT SalesTerritoryKey FROM territories WHERE Country = 'Canada')
+		AND r.TerritoryKey = (SELECT SalesTerritoryKey FROM territories WHERE Country = 'Canada')
          GROUP BY pc.CategoryName
          ORDER BY pc.CategoryName)
 -- Calculate difference between total sales and total returns. 
 SELECT cs.CategoryName AS ProductCategory,
-	   ROUND((cs.Sales - rv.ReturnsValue), 2) AS NetSales,
+       ROUND((cs.Sales - rv.ReturnsValue), 2) AS NetSales,
        rv.ReturnsValue,
        cs.Sales
 FROM category_sales cs
@@ -209,15 +209,15 @@ JOIN returns_value rv USING (CategoryName);
 
 -- Fetch the necessary columns. Calculate discount by subtracting 15%(0.15) from 1 and multiply results by price. 
 SELECT ProductSKU,
-	   ProductName,
+       ProductName,
        SubcategoryName,
-	   ROUND(ProductPrice, 2) AS ProductPrice,
-	   ROUND(ProductPrice * (1 - 0.15), 2) AS PromotionPrice
+       ROUND(ProductPrice, 2) AS ProductPrice,
+       ROUND(ProductPrice * (1 - 0.15), 2) AS PromotionPrice
 FROM products p
 JOIN product_subcategories ps
 ON p.ProductSubcategoryKey = ps.ProductSubcategoryKey
 WHERE ps.ProductCategoryKey = (SELECT ProductCategoryKey 
-							   FROM product_categories 
+			       FROM product_categories 
                                WHERE CategoryName = 'Bikes')
 ORDER BY SubcategoryName, PromotionPrice;
 
@@ -229,10 +229,10 @@ ORDER BY SubcategoryName, PromotionPrice;
 DROP TEMPORARY TABLE IF EXISTS sales_amount;
 CREATE TEMPORARY TABLE IF NOT EXISTS sales_amount AS
 SELECT s.OrderDate, 
-	   c.CustomerKey, 
-	   c.FirstName,
-	   c.LastName,
-	   (s.OrderQuantity * p.ProductPrice) AS Amount
+       c.CustomerKey, 
+       c.FirstName,
+       c.LastName,
+       (s.OrderQuantity * p.ProductPrice) AS Amount
 FROM sales_combined s 
 JOIN customers c
 ON s.CustomerKey = c.CustomerKey
@@ -241,21 +241,21 @@ ON p.ProductKey = s.ProductKey;
 -- Number each row of purchases grouped by customer key, using a CTE and Ranking Window Function.
 WITH purchase_row AS 
 		(SELECT OrderDate, 
-				CustomerKey, 
-				Amount,
-				ROW_NUMBER() OVER (PARTITION BY CustomerKey ORDER BY OrderDate) AS PurchaseNum
+			CustomerKey, 
+			Amount,
+			ROW_NUMBER() OVER (PARTITION BY CustomerKey ORDER BY OrderDate) AS PurchaseNum
 		 FROM sales_amount),
 	 -- Fetch the value of first purchase items and last purchase items using a CTE and Analytical/Value Window Functions. 
 	 purchase_value AS
 	    (SELECT CustomerKey,
-	     FIRST_VALUE(Amount) OVER (PARTITION BY CustomerKey) AS FirstPurchaseValue,
-         LAST_VALUE(Amount) OVER (PARTITION BY CustomerKey) AS LastPurchaseValue
-		 FROM purchase_row)
+	            FIRST_VALUE(Amount) OVER (PARTITION BY CustomerKey) AS FirstPurchaseValue,
+                    LAST_VALUE(Amount) OVER (PARTITION BY CustomerKey) AS LastPurchaseValue
+	     FROM purchase_row)
 -- Fetch customer keys, first purchase values, last purchase values and their differences.        
 SELECT DISTINCT CustomerKey,
-	   FirstPurchaseValue,
-       LastPurchaseValue,
-       ROUND((LastPurchaseValue - FirstPurchaseValue), 2) AS Difference
+		FirstPurchaseValue,
+       		LastPurchaseValue,
+       		ROUND((LastPurchaseValue - FirstPurchaseValue), 2) AS Difference
 FROM purchase_value
 LIMIT 1000;
 		
@@ -265,9 +265,9 @@ LIMIT 1000;
 -- Fetch customer key, product category, annual income and order number columns by joining the necessary tables and then filter out bikes.
 WITH bike_purchases AS 
 	(SELECT c.CustomerKey, 
-			pc.CategoryName,
-            c.AnnualIncome,
-            s.OrderNumber
+		pc.CategoryName,
+        	c.AnnualIncome,
+            	s.OrderNumber
 	  FROM product_categories pc
 	  JOIN product_subcategories ps 
 	  ON pc.ProductCategoryKey = ps.ProductCategoryKey 
@@ -281,11 +281,11 @@ WITH bike_purchases AS
 -- Group annual income into bins/buckets and count number of bikes per group. 
 SELECT CustomerKey, 
 	   CASE 
-		   WHEN AnnualIncome < 50000 THEN 'a. Under $50k'
-		   WHEN AnnualIncome BETWEEN 50000 AND 75000 THEN 'b. $50k - $75k'
-		   WHEN AnnualIncome BETWEEN 75000 AND 100000 THEN 'c. $75k - $100k'
-		   WHEN AnnualIncome > 100000 THEN 'd. Over $100k'
-		   ELSE 'Other'
+	       WHEN AnnualIncome < 50000 THEN 'a. Under $50k'
+	       WHEN AnnualIncome BETWEEN 50000 AND 75000 THEN 'b. $50k - $75k'
+	       WHEN AnnualIncome BETWEEN 75000 AND 100000 THEN 'c. $75k - $100k'
+	       WHEN AnnualIncome > 100000 THEN 'd. Over $100k'
+	       ELSE 'Other'
        END AS IncomeGroup,     
 	   COUNT(OrderNumber) AS Purchases 
 FROM bike_purchases 
@@ -297,10 +297,10 @@ GROUP BY CustomerKey, AnnualIncome;
 -- Fetch customer key, order date, order number, product category and total children columns by joining the necessary tables and then filter out bikes. 
 WITH bike_purchases AS 
 	(SELECT c.CustomerKey,
-			s.OrderDate,
-			s.OrderNumber,
-			pc.CategoryName,
-            c.TotalChildren
+		s.OrderDate,
+		s.OrderNumber,
+		pc.CategoryName,
+            	c.TotalChildren
 	  FROM product_categories pc
 	  JOIN product_subcategories ps 
 	  ON pc.ProductCategoryKey = ps.ProductCategoryKey 
@@ -314,7 +314,7 @@ WITH bike_purchases AS
 -- Fetch date in 'MM-YYYY' format (eg. 01-2021) and group customers with children and no children.
 SELECT DATE_FORMAT(OrderDate, '%m-%Y') AS MonthYear,
 	   CASE 
-		   WHEN TotalChildren = 0 THEN 'No_Children'
+	       WHEN TotalChildren = 0 THEN 'No_Children'
            ELSE 'Has_Children'
 	   END AS 'Children?',
 	   COUNT(OrderNumber) AS Purchases 
