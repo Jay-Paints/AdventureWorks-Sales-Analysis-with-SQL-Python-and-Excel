@@ -61,7 +61,7 @@ Various SQL queries were used to perform the sales analysis effectively. These q
 ![screen shot of tools](https://github.com/Jay-Paints/AdventureWorks-Sales-Analysis-with-SQL-Python-and-Excel/assets/113263067/57e2e174-8af7-4b69-bf74-3ad72f0c13da)
 
 ## Charts and Insights 
-All images of the Excel charts can be viewed here: [Excel charts](images of Excel charts). Download the [Excel file](adventureworks2022.xlsx) to read the full report. Below are insights generated from the analysis:
+All images of the Excel charts can be viewed here: [Excel charts](images of Excel charts.md). Download the [Excel file](adventureworks2022.xlsx) to read the full report. Below are insights generated from the analysis:
 
 #### 1.	Country Sales by Customer Age Group
 * Customers between the ages of 30-39 and 40-49 years recorded the highest sales in all countries from 2020 to 2022, accounting for 69% of total sales. 
