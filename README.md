@@ -28,7 +28,7 @@ I created a new database named adventureworks2022 in MySQL Workbench using the f
 
 There are several options for populating a database with data from csv files. I used the Spyder IDE in Anaconda Navigator to write a Python script that automated the import of all ten csv files into the adventureworks2022 database in MySQL. This process was completed once and can be used to import hundreds of files from a folder/directory into a database. Otherwise, the csv files would have to be imported sequentially using the Table Data Import Wizard in MySQL Workbench. You can imagine how tedious it will be if you have to upload many files. Similarly, the Python script can be used to import data into PostgreSQL and other databases with a few modifications. Here is a link to the Python script in this GitHub repository: [Python to MySQL data import](mysql_data_import.py)
 
-Kindly note that this project focused on demonstrating Data Query Language (DQL), using the SELECT statement to retrieve data from one or more tables. Therefore, creating tables with specified data types, attributes, and constraints was ignored. MySQL database used the default data types to complete the process. However, the default data types take up more storage space.
+Kindly note that this project focused on demonstrating Data Query Language (DQL), using the SELECT statement to retrieve data from one or more tables. Therefore, creating tables with specified data types, attributes, and constraints was ignored. MySQL database used the default data types to complete the process. However, the default data types take up more storage space. 
 
 ## Data Wrangling and Analysis Process
 I created a VIEW called sales_combined that appends all three sales tables. This avoids using a UNION JOIN whenever all sales tables must be combined for queries. After retrieving the query results for the first question, I discovered that the ages of customers ranged from 40 and 90, excluding customer age groups under 40.  That was not representative of real-world customer ages; therefore, I altered the BirthDate field by adding 18 years to each customer’s BirthDate. Customers were subsequently grouped into the following buckets: 
@@ -57,8 +57,8 @@ After running the queries, I copied each result set using the option Copy Row (w
 
 Finally, each sheet in the Excel workbook was beautifully designed. To make navigation easier, I added a table of contents sheet which includes hyperlinks to the other sheets.
 
-## SQL Queries, Tools and Skills Utilized
-Various SQL queries were used to perform the sales analysis effectively. These queries involved aggregating sales data, calculating key performance metrics such as revenue, sales growth, and grouping data based on dimensions such as time, region, or product category. The queries further facilitated the exploration of sales patterns, customer segments, and comparison of performance across countries. The following are the tools and skills used in SQL, Python, and Excel:
+## SQL Queries, Tools, and Skills Utilized
+Various [SQL queries](adventureworks2022.sql) were used to perform the sales analysis effectively. These queries involved aggregating sales data, calculating key performance metrics such as revenue, sales growth, and grouping data based on dimensions such as time, region, or product category. The queries further facilitated the exploration of sales patterns, customer segments, and comparison of performance across countries. The following are the tools and skills used in SQL, Python, and Excel:
 
 ![screen shot of tools](https://github.com/Jay-Paints/AdventureWorks-Sales-Analysis-with-SQL-Python-and-Excel/assets/113263067/57e2e174-8af7-4b69-bf74-3ad72f0c13da)
 
