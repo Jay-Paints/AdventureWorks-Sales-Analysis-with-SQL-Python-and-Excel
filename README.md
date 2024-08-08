@@ -11,7 +11,7 @@ The task was to answer 10 questions and produce a report in a spreadsheet (Micro
 
   1.	What was each country’s sales by customer age group?
   2.	Show the quantity of product subcategory purchases by customer age group.
-  3.	3.	Management is interested in comparing European market sales in the year 2021. Show a comparison of monthly sales for European countries in the year under review.
+  3.	Management is interested in comparing European market sales in the year 2021. Show a comparison of monthly sales for European countries in the year under review.
   4.	Compare monthly sales and cumulative sales in Australia and USA for the year 2021.
   5.	What was the quantity and value of returns for product categories in each country? 
   6.	What was the impact of returns on accessories, bikes and clothing sales in Canada?
@@ -26,7 +26,7 @@ I created a new database named adventureworks2022 in MySQL Workbench using the f
     DROP DATABASE IF EXISTS adventureworks2022;
     CREATE DATABASE IF NOT EXISTS adventureworks2022 DEFAULT CHARACTER SET latin1;
 
-There are several options for populating a database with data from csv files. I used the Spyder IDE in Anaconda Navigator to write a Python script that automated the import of all ten csv files into the adventureworks2022 database in MySQL. This process was completed once and can be used to import hundreds of files from a folder/directory into a database. Otherwise, the csv files would have to be imported sequentially using the Table Data Import Wizard in MySQL Workbench. You can imagine how laborious it will be if you have to upload many files. Similarly, the Python script can be used to import data into PostgreSQL and other databases with a few modifications. Here is a link to the Python script in this GitHub repository: [Python to MySQL data import] (Create a markdown link to directly reference the files in the same repository)
+There are several options for populating a database with data from csv files. I used the Spyder IDE in Anaconda Navigator to write a Python script that automated the import of all ten csv files into the adventureworks2022 database in MySQL. This process was completed once and can be used to import hundreds of files from a folder/directory into a database. Otherwise, the csv files would have to be imported sequentially using the Table Data Import Wizard in MySQL Workbench. You can imagine how tedious it will be if you have to upload many files. Similarly, the Python script can be used to import data into PostgreSQL and other databases with a few modifications. Here is a link to the Python script in this GitHub repository: [Python to MySQL data import](mysql_data_import.py)
 
 ## Data Wrangling and Analysis Process
 I created a VIEW called sales_combined that appends all three sales tables. This avoids using a UNION JOIN whenever all sales tables must be combined for queries. After retrieving the query results for the first question, I discovered that the ages of customers ranged from 40 and 90, excluding customer age groups under 40.  That was not representative of real-world customer ages; therefore, I altered the BirthDate field by adding 18 years to each customer’s BirthDate. Customers were subsequently grouped into the following buckets: 
@@ -61,60 +61,52 @@ Various SQL queries were used to perform the sales analysis effectively. These q
 ![screen shot of tools](https://github.com/Jay-Paints/AdventureWorks-Sales-Analysis-with-SQL-Python-and-Excel/assets/113263067/57e2e174-8af7-4b69-bf74-3ad72f0c13da)
 
 ## Charts and Insights 
-All images of the Excel charts can be viewed here: [Excel charts](insert link here). Download the [Excel file](insert link in ‘Excel file’) to read the full report. Below are insights generated from the analysis:
-
-![1  Country Sales by Customer Age Group](https://github.com/user-attachments/assets/cc271cee-02cf-4be4-9cd3-999f9a1167ec)
+All images of the Excel charts can be viewed here: [Excel charts](images of Excel charts). Download the [Excel file](adventureworks2022.xlsx) to read the full report. Below are insights generated from the analysis:
 
 #### 1.	Country Sales by Customer Age Group
 * Customers between the ages of 30-39 and 40-49 years recorded the highest sales in all countries from 2020 to 2022, accounting for 69% of total sales. 
 * France had the highest sales by 30-39 years age group. 
-
-![2  Product Purchased by Customer Age Group - 2021](https://github.com/user-attachments/assets/b5c58f96-cc43-4808-a0b5-28776b97e613)
+![1  Country Sales by Customer Age Group](https://github.com/user-attachments/assets/cc271cee-02cf-4be4-9cd3-999f9a1167ec)
 
 #### 2.	Product Purchases by Customer Age Group - 2021
 * Again, customers aged 30-39 and 40-49 years purchased the highest quantities of product by subcategories. They purchased a total quantity of 54,484 products out of 84,174, representing 65%.
-
-![3  Europe Sales - 2021](https://github.com/user-attachments/assets/d8344398-7fb5-4a86-af18-139256b2fe4f)
+![2  Product Purchased by Customer Age Group - 2021](https://github.com/user-attachments/assets/b5c58f96-cc43-4808-a0b5-28776b97e613)
 
 #### 3.	Europe Sales – 2021
 * Sales in France rose steadily throughout the year, with a significant spike from October to December, indicating a strong end-of-year performance.
 * Similarly, Germany's sales remained relatively stable, with a notable surge in December. This depicts a steady market with a late-year boost.
 * On the other hand, sales in the UK remained consistent, with a rise in July and significant growth beginning in September.
 * Overall, all three countries saw growth near the end of the year, with France showing the greatest increase. It would be beneficial to correlate these trends with specific events or marketing initiatives, such as Christmas holidays or year-end promotions to gain deeper insights.
-
-![4  Sales and Cum_Sales for AUS and USA - 2021](https://github.com/user-attachments/assets/378827c9-c267-407f-b13e-74801f3684c7)
+![3  Europe Sales - 2021](https://github.com/user-attachments/assets/d8344398-7fb5-4a86-af18-139256b2fe4f)
 
 #### 4.	Sales and Cumulative Sales for Australia & USA - 2021
 * Australia began the year with monthly sales double the amount of USA's sales until April 2021. Sales in the USA increased significantly in July and December.
 * Australia's sales grew at a faster rate compared to USA in the first half of the year. USA's sales picked up from July, with a remarkable gain occurring in December. Overall, both countries experienced continuous increases in cumulative sales throughout 2021.
 * The consistent growth in cumulative sales suggests a healthy market for both countries with potential for expansion. 
-
-![5  Product Returns by Country](https://github.com/user-attachments/assets/0aa51236-a814-4f23-8d28-c303c3e7cee7)
+![4  Sales and Cum_Sales for AUS and USA - 2021](https://github.com/user-attachments/assets/378827c9-c267-407f-b13e-74801f3684c7)
 
 #### 5.	Product Returns by Country
 *	USA had the highest number of Accessory returns, followed by Australia and Canada. Regarding Bike returns, the highest number was recorded by Australia.
 *	In terms of value, Australia had the highest product returns value, followed by USA and Germany. Canada and France recorded the lowest return value.
 *	There were no Component returns.
-
-![6  Canada Product Returns](https://github.com/user-attachments/assets/67ed5052-7287-4fb2-bad5-8b1f444ad555)
+![5  Product Returns by Country](https://github.com/user-attachments/assets/0aa51236-a814-4f23-8d28-c303c3e7cee7)
 
 #### 6.	Canada Product Returns (Accessories, Bikes and Clothing)
 *	Canada's sales revenue was reduced by 2.5%, that is, from $1.77 million to $1.72 million, due to returns in Accessories, Bikes, and Clothing. A total of $44,502 was lost to returns.
-
-![7  Bike Purchases by Customer Income](https://github.com/user-attachments/assets/ef409d40-4b23-436b-acbd-41aa60261ed0)
+![6  Canada Product Returns](https://github.com/user-attachments/assets/67ed5052-7287-4fb2-bad5-8b1f444ad555)
 
 #### 7.	Bike Purchases by Customer Income
 * As income rose, the number of bikes purchased declined.
 * Customers earning less than $50,000 annually purchased the most bikes, closely followed by customers who earned between $50,000 and $75,000 as the second-highest purchasers.
 * Customers who earned more than $100,000 yearly purchased the fewest bikes.
 * As a result, promotional and marketing initiatives should target customers with an annual income of less than $100,000. 
-
-![8  Bike Sales 2020 - Customers with Children vs  Customers without](https://github.com/user-attachments/assets/cc922cc7-adaf-4c97-9d6f-5db95d7df2e2)
+![7  Bike Purchases by Customer Income](https://github.com/user-attachments/assets/ef409d40-4b23-436b-acbd-41aa60261ed0)
 
 #### 8.	Bike Sales - Customers with Children vs Customers without Children
 * Monthly sales remained rather stable throughout the year, with a notable surge in December, as shown by the bars.
 * The blue line indicates that the percentage of sales by customers with children remained relatively consistent. However, there was a considerable decrease in November.  This suggests that customers with children made fewer purchases in November.
 * On the other hand, the yellow line shows that the percentage of purchases by customers without children increased significantly in November. Customers without children were more active in November. 
+![8  Bike Sales 2020 - Customers with Children vs  Customers without](https://github.com/user-attachments/assets/cc922cc7-adaf-4c97-9d6f-5db95d7df2e2)
 
 ## Recommendations
 #### 1. Promotional and marketing initiatives should target the following demographics:
@@ -129,4 +121,4 @@ All images of the Excel charts can be viewed here: [Excel charts](insert link he
 * Investigate and evaluate the quality of Accessories in the USA and Australia. 
 
 ## Conclusion
-This in-depth AdventureWorks Data Analysis project demonstrates how SQL can be integrated with Python and Excel to facilitate automated data import, advanced SQL queries, and Excel visualizations to extract meaningful insights from large datasets. The approach provides a clear understanding of leveraging diverse tools to complete the data analysis project in a less arduous and timely manner.
+This in-depth AdventureWorks Data Analysis project demonstrates how SQL can be integrated with Python and Excel to facilitate automated data import, advanced SQL queries, and Excel visualizations to extract meaningful insights from large datasets. The approach provides a clear understanding of leveraging diverse tools to complete the data analysis project in a less laborious and timely manner.
