@@ -106,7 +106,7 @@ All images of the Excel charts can be viewed in this repository here: [Excel cha
 #### 1. Promotional and marketing initiatives should target the following demographics:
 * Customers aged 30 to 49 years old.
 * Customers with an annual income of less than $100,000.
-* Customers with children.
+* Customers with children. However, in November target customers without Children.
 #### 2. Promotional Period
 * Run promotions from September to December to maximize end-of-year sales revenue in Europe.
 #### 3.	Market Expansion
