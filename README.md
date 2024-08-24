@@ -1,7 +1,7 @@
 # AdventureWorks Sales Analysis with Advanced SQL, Python for Automating Data Import into MySQL Database, and Excel for Data Visualization and Reporting
 
 ## Objective
-The purpose of this advanced SQL, Python, and Excel project was to conduct an in-depth analysis of AdventureWorks bike sales data to gain valuable insights into sales performance by country, customer segments, and products by answering 10 questions. Furthermore, the analysis aimed to identify trends and offer recommendations to inform data-driven business strategies for improved decision-making.
+This project aimed to perform a comprehensive analysis of AdventureWorks bike sales data using SQL as the main tool, supported by Python and Excel. The goal was to extract actionable insights into sales performance across countries, customer segments, and product categories by answering ten key business questions. These insights were intended to inform strategic decisions and enhance data-driven business outcomes.
 
 ## Data Source and Overview
 The AdventureWorks Raw Data csv files (excluding three duplicate files in the Sales Data folder and Product Category Sales (Unpivot Demo) file) used for this analysis were downloaded from [Kaggle](https://www.kaggle.com/datasets/deepujawarkar/adventure-works-raw-data). The ten datasets used include sales transaction details, product details, returns information, territories and customer demographics, which are essential for sales analysis.  
