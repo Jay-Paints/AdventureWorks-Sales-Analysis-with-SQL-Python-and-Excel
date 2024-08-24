@@ -103,16 +103,14 @@ All images of the Excel charts can be viewed in this repository here: [Excel cha
 * On the other hand, the yellow line shows that the percentage of purchases by customers without children increased significantly in November. Customers without children were more active in November. 
 
 ## Recommendations
-#### 1. Promotional and marketing initiatives should target the following demographics:
-* Customers aged 30 to 49 years old.
-* Customers with an annual income of less than $100,000.
-* Customers with children. However, target customers without Children in November.
-#### 2. Promotional Period
-* Run promotions from September to December to maximize end-of-year sales revenue in Europe.
-#### 3.	Market Expansion
-* Consider expanding the market in Australia and the USA. There is potential for growth.
-#### 4.	Product Returns
-* Investigate and evaluate the quality of Accessories in the USA and Australia. 
+#### 1. Target Marketing 
+* Focus on customers aged 30-49, with annual incomes below $100,000, and customers with children—except in November when targeting childless customers.
+#### 2. Promotional Timing 
+* Run promotions from September to December to capitalize on peak sales periods in Europe.
+#### 3.	Market Expansion 
+* Consider expanding operations in Australia and the USA due to observed growth potential.
+#### 4.	Product Quality 
+* Investigate and address high return rates in the USA and Australia, particularly for accessories.
 
 ## Conclusion
-This in-depth AdventureWorks Data Analysis project demonstrates how SQL can be integrated with Python and Excel to facilitate automated data import, advanced SQL queries, and Excel visualizations to extract meaningful insights from large datasets. The approach provides a clear understanding of leveraging diverse tools to complete the data analysis project in a less laborious and timely manner.
+This project demonstrates the power of combining SQL, Python, and Excel to perform a thorough data analysis that delivers strategic insights. By automating data importation, conducting advanced SQL queries, and utilizing Excel for visualization, this project showcases an efficient and impactful approach to extracting actionable business intelligence from complex datasets.
