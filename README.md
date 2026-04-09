@@ -104,7 +104,7 @@ All images of the Excel charts can be viewed in this repository here: [Excel cha
 
 ## Recommendations
 #### 1. Target Marketing 
-* Focus on customers aged 30-49, with annual incomes below $100,000, and customers with children—except in November when targeting childless customers.
+* Focus on customers aged 30-49, with annual incomes below $100,000, and customers with children.
 #### 2. Promotional Timing 
 * Run promotions from September to December to capitalize on peak sales periods in Europe.
 #### 3.	Market Expansion 
